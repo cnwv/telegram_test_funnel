@@ -6,3 +6,4 @@
 /migrations/versions/a2f50d00539a_init_commit.py
 /my_account.session-journal
 /src/my_account.session-journal
+.env
