@@ -11,6 +11,11 @@ Pyrogram = "^2.0.106"
 alembic = "^1.12.1"
 sqlalchemy = "^2.0.23"
 loguru = "^0.7.2"
+python-dotenv = "^1.0.0"
+asyncpg = "^0.29.0"
+greenlet = "^3.0.1"
+tgcrypto = "^1.2.5"
+config = {path = "./config/"}
 
 
 [build-system]
