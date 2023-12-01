@@ -31,16 +31,16 @@ async def main():
         for user in users:
             if not user.state == 'finished':
                 current_time = datetime.utcnow().replace(tzinfo=timezone.utc)
-                if (current_time - user.registration_time) > timedelta(seconds=10) and user.state == 'start':
+                if (current_time - user.registration_time) > timedelta(minutes=10) and user.state == 'start':
                     await BaseDAO.update(user.user_id, {"state": 'first'})
                     await send_message(user.user_id, 'Добрый день!')
-                elif (current_time - user.registration_time) > timedelta(seconds=20) and user.state == 'first':
+                elif (current_time - user.registration_time) > timedelta(minutes=90) and user.state == 'first':
                     await app.send_message(chat_id=user.user_id, text='Подготовила для вас материал')
                     await send_photo(user.user_id)
                     await BaseDAO.update(user.user_id, {"state": 'second'})
-                elif (current_time - user.registration_time) > timedelta(seconds=40) and user.trigger_message:
+                elif (current_time - user.registration_time) > timedelta(minutes=120) and user.trigger_message:
                     await BaseDAO.update(user.user_id, {"state": 'finished'})
-                elif (current_time - user.registration_time) > timedelta(seconds=40) and not user.trigger_message:
+                elif (current_time - user.registration_time) > timedelta(minutes=120) and not user.trigger_message:
                     await app.send_message(chat_id=user.user_id, text='Скоро вернусь с новым материалом!')
                     await BaseDAO.update(user.user_id, {"state": 'finished'})
         await asyncio.sleep(10)
