@@ -9,9 +9,6 @@ async def process_messages(client, message):
     to_user_id = message.chat.id
     existing_user = await BaseDAO.find_one_or_none(user_id=from_user_id)
     if not existing_user:
-        print('h')
-        print(from_user_id)
-        print(settings.MY_USER_ID)
         await BaseDAO.add(user_id=from_user_id)
     elif from_user_id == to_user_id and text == "/users_today":
         count = await BaseDAO.today_user_count()

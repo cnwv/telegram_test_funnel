@@ -1,9 +1,8 @@
-
 import asyncio
-from config import settings, app
-from database import BaseDAO
 from datetime import datetime, timedelta, timezone
 from loguru import logger
+from config import settings, app
+from database import BaseDAO
 
 
 async def send_photo(user_id):
@@ -12,7 +11,7 @@ async def send_photo(user_id):
                 "800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxz" \
                 "ZWFyY2h8Mnx8c29tZXxlbnwwfHwwfHx8MA%3D%3D"
         await app.send_photo(user_id, photo)
-        logger.success(f"Message sent successfully to {user_id}")
+        logger.success(f"Photo sent successfully to id {user_id}")
     except Exception as e:
         logger.error(f"Error sending photo to {user_id}: {e}")
 
@@ -20,9 +19,9 @@ async def send_photo(user_id):
 async def send_message(user_id, text):
     try:
         await app.send_message(chat_id=user_id, text=text)
-        logger.success(f"Message sent successfully to {user_id}")
+        logger.success(f"Message sent successfully to id {user_id}")
     except Exception as e:
-        logger.error(f"Error sending message to {user_id}: {e}")
+        logger.error(f"Error sending message to id {user_id}: {e}")
 
 
 async def main():
