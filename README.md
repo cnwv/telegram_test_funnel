@@ -4,7 +4,7 @@
 
 2)Создать venv и установить requirements.txt
 
-3)Внутри машины запустить две команды, чтобы ввторизироваться в Telegram API:
+3)Внутри машины запустить две команды, чтобы авторизироваться в Telegram API:
 ```python
 alembic upgrade head
 python app.py
